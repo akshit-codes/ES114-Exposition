@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>ES114 Exposition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://unpkg.com/maplibre-gl@3.6.0/dist/maplibre-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <div id="sliderBox">
+    <div class="heading">
+      Trees in Vancouver
+    </div>
+    <div class="info">
+      <div class="desc">
+        Density plot of trees in Vancouver as of February 2025.
+      </div>
+      <div class="expl">
+        The layer aggregates data within the boundary of each hexagon cell
+      </div>
+      <div class="src">
+        Data Source: <a
+          href="https://opendata.vancouver.ca/explore/dataset/public-trees/information/?disjunctive.neighbourhood_name&disjunctive.on_street&disjunctive.species_name&disjunctive.common_name">opendata.vancouver.ca</a>
+      </div>
+      <div class="total">
+        Total Trees: <span>180.6K</span>
+      </div>
+    </div>
+    <div class="inputs">
+      <div class="name">
+        Radius:
+      </div>
+      <div class="combo">
+        <input type="range" min="5" max="150" step="5" value="25" class="slider" id="sRadius">
+        <button class="value-control" onclick="nRadius.stepDown(); nRadius.dispatchEvent(new Event('input'))"
+          title="Decrease value" aria-label="Decrease value">-</button>
+        <input type="number" min="5" max="150" step="5" value="25" class="num" id="nRadius" name="nRadius">
+        <button class="value-control" onclick="nRadius.stepUp(); nRadius.dispatchEvent(new Event('input'))"
+          title="Increase value" aria-label="Increase value">+</button>
+
+      </div>
+      <div class="name">
+        Coverage:
+      </div>
+      <div class="combo">
+        <input type="range" min="1" max="100" value="50" class="slider" id="sCoverage">
+        <button class="value-control" onclick="nCoverage.stepDown(); nCoverage.dispatchEvent(new Event('input'))"
+          title="Decrease value" aria-label="Decrease value">-</button>
+        <input type="number" min="1" max="100" step="1" value="50" class="num" id="nCoverage" name="nCoverage">
+        <button class="value-control" onclick="nCoverage.stepUp(); nCoverage.dispatchEvent(new Event('input'))"
+          title="Increase value" aria-label="Increase value">+</button>
+      </div>
+      <div class="name">
+        Upper Percentile:
+      </div>
+      <div class="combo">
+        <input type="range" min="1" max="100" value="100" class="slider" id="sUPercentile">
+        <button class="value-control" onclick="nUPercentile.stepDown(); nUPercentile.dispatchEvent(new Event('input'))"
+          title="Decrease value" aria-label="Decrease value">-</button>
+        <input type="number" min="1" max="100" step="1" value="100" class="num" id="nUPercentile" name="nUPercentile">
+        <button class="value-control" onclick="nUPercentile.stepUp(); nUPercentile.dispatchEvent(new Event('input'))"
+          title="Increase value" aria-label="Increase value">+</button>
+      </div>
+    </div>
+</body>
+<script type="module">
+  import { renderToDOM } from './app.tsx';
+  renderToDOM(document.getElementById('app'));
+</script>
+
+</html>
