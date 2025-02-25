@@ -18,7 +18,7 @@ body {
 #sliderBox {
   position: absolute;
   background-color: #1f1f1f;
-  width: 40vw;
+  width: 20vw;
   border-radius: 10px;
   margin: 5vh;
   right: 0;
@@ -71,6 +71,7 @@ input[type='range'].slider {
   justify-content: space-between;
 }
 .name {
+  font-size: 0.9rem;
   margin-top: 10px;
   width: 100%;
 }
